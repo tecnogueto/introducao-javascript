@@ -14,9 +14,9 @@ for (var i = 0; pacientes.length > i; i++) {
 
   var resultado = linhaPaciente.querySelector('.info-imc');
 
-  var imc = peso / (altura * altura);
+  var imc = calculaImc(peso, altura);
 
-  resultado.textContent = imc.toFixed(2);
+  resultado.textContent = imc;
 
   if (peso <= 0 || peso >= 400) {
     resultado.textContent = 'Peso inválido';
@@ -27,4 +27,11 @@ for (var i = 0; pacientes.length > i; i++) {
     resultado.textContent = 'Altura inválida';
     pacientes[i].classList.add('linha-erro');
   }
+}
+
+function calculaImc(peso, altura) {
+  var imc = 0;
+  imc = peso / (altura * altura);
+
+  return imc.toFixed(2);
 }
