@@ -1,64 +1,47 @@
-var titulo = document.querySelector('.titulo');
-titulo.textContent = 'Dr. Digão';
-
+// pegar elemento por id
 var pacientes = document.querySelectorAll('.paciente');
 
-for (var i = 0; pacientes.length > i; i++) {
-  var linhaPaciente = pacientes[i];
+for (var i = 0; pacientes.length; i++) {
+  var paciente = pacientes[i];
 
-  var tdPeso = linhaPaciente.querySelector('.info-peso');
+  // pegando peso
+  var tdPeso = paciente.querySelector('.info-peso');
   var peso = tdPeso.textContent;
 
-  var tdAltura = linhaPaciente.querySelector('.info-altura');
+  // pegando altura
+  var tdAltura = paciente.querySelector('.info-altura');
   var altura = tdAltura.textContent;
 
-  var resultado = linhaPaciente.querySelector('.info-imc');
+  // pegando td imc
+  var tdImc = paciente.querySelector('.info-imc');
 
-  var imc = peso / (altura * altura);
+  var pesoEhValido = true;
+  var alturaEhValida = true;
 
-  resultado.textContent = imc.toFixed(2);
-
-  if (peso <= 0 || peso >= 400) {
-    resultado.textContent = 'Peso inválido';
-    pacientes[i].classList.add('linha-erro');
+  if (altura <= 0 || altura >= 3.0) {
+    console.log('Altura inválida');
+    pesoEhValido = false;
+    tdImc.textContent = 'Altura inválida!';
+    paciente.classList.add('erro');
   }
 
-  if (altura <= 0 || altura >= 3) {
-    resultado.textContent = 'Altura inválida';
-    pacientes[i].classList.add('linha-erro');
+  if (peso <= 0 || peso >= 1000) {
+    console.log('Peso inválido');
+    alturaEhValida = false;
+    tdImc.textContent = 'Peso inválido!';
+    paciente.classList.add('erro');
+  }
+
+  if (alturaEhValida && pesoEhValido) {
+    // calculando imc
+    var imc = calculaImc(peso, altura);
+    tdImc.textContent = imc;
   }
 }
 
-var botaoAdicionar = document.querySelector ('#adicionar-paciente');
-botaoAdicionar.addEventListener ('click', mostrarAlerta);
+function calculaImc(peso, altura) {
+  var imc = 0;
+  imc = peso / (altura * altura);
 
-function mostrarAlerta (evento){
-evento.preventDefault ();
-alert ('Clique Aqui');
-
-var formulario = document.querySelector ('#formulario');
-var nome = formulario.nome.value;
-var peso = formulario.peso.value;
-var altura = formulario.altura.value;
-var gordura = formulario.gordura.value;
-
-var pacienteTr = document.createElement ("tr");
-var nomeTd = document.createElement ("td"); 
-var pesoTd = document.createElement ("td"); 
-var alturaTd = document.createElement ("td"); 
-var gorduraTd = document.createElement ("td"); 
-
-
-nomeTd.textContent = nome;
-pesoTd.textContent = peso;
-alturaTd.textContent = altura;
-gorduraTd.textContent = gordura;
-
-pacienteTr.appendChild (nomeTd);
-pacienteTr.appendChild (pesoTd);
-pacienteTr.appendChild (alturaTd);
-pacienteTr.appendChild (gorduraTd);
-
-var table = document.querySelector ('#tabela-paciente);
-table.appendChild (pacienteTr);
+  return imc.toFixed(2);
 }
