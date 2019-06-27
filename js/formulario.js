@@ -11,7 +11,6 @@ function criarPaciente(evento) {
   var pacienteTr = montaTr(paciente);
   pacienteTr.classList.add('paciente');
 
-  var table = document.querySelector('#tabela-pacientes');
   table.appendChild(pacienteTr);
 
   formulario.reset();
