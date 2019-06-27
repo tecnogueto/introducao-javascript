@@ -14,7 +14,7 @@ for (var i = 0; i < pacientes.length; i++) {
 
   var tdImc = paciente.querySelector('.info-imc');
 
-  var imc = peso / (altura * altura);
+  var imc = calculaImc(peso, altura);
 
   var validarPeso = true;
   var validarAltura = true;
@@ -32,6 +32,12 @@ for (var i = 0; i < pacientes.length; i++) {
   }
 
   if (validarAltura && validarPeso) {
-    tdImc.textContent = imc.toFixed(2);
+    tdImc.textContent = imc;
   }
+}
+
+function calculaImc(peso, altura) {
+  var imc = peso / (altura * altura);
+
+  return imc.toFixed(2);
 }
