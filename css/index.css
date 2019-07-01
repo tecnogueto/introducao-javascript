@@ -136,3 +136,15 @@ button:disabled {
   background-color: lightcoral;
   color: white;
 }
+
+.mesagem-erro {
+  color: white;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 5px;
+  background: lightcoral;
+}
+
+.escode-div {
+  display: none;
+}

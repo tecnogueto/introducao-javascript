@@ -10,7 +10,17 @@ function criarPaciente(evento) {
   var paciente = pagarForm(formulario);
   var pacienteTr = montaTr(paciente);
   pacienteTr.classList.add('paciente');
+  var erro = validaPaciente(paciente);
 
+  if (erro.length) {
+    var mesagemErro = document.querySelector('#mesagem-erro');
+    mesagemErro.classList.remove('escode-div');
+
+    mesagemErro.textContent = erro;
+    return;
+  }
+
+  var table = document.querySelector('#tabela-pacientes');
   table.appendChild(pacienteTr);
 
   formulario.reset();
@@ -24,6 +34,7 @@ function pagarForm(formulario) {
     gordura: formulario.gordura.value,
     imc: calculaImc(formulario.peso.value, formulario.altura.value),
   };
+
   return paciente;
 }
 
@@ -45,4 +56,12 @@ function montaTd(dado, classe) {
   td.textContent = dado;
   td.classList.add(classe);
   return td;
+}
+
+function validaPaciente(paciente) {
+  if (validaPeso(paciente.peso)) {
+    return '';
+  } else {
+    return 'Peso Inválido';
+  }
 }
