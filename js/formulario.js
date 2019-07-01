@@ -10,13 +10,10 @@ function criarPaciente(evento) {
   var paciente = pagarForm(formulario);
   var pacienteTr = montaTr(paciente);
   pacienteTr.classList.add('paciente');
-  var erro = validaPaciente(paciente);
+  var erros = validaPaciente(paciente);
 
-  if (erro.length) {
-    var mesagemErro = document.querySelector('#mesagem-erro');
-    mesagemErro.classList.remove('escode-div');
-
-    mesagemErro.textContent = erro;
+  if (erros.length) {
+    exibeMesagemErro(erros);
     return;
   }
 
@@ -24,6 +21,16 @@ function criarPaciente(evento) {
   table.appendChild(pacienteTr);
 
   formulario.reset();
+}
+
+function exibeMesagemErro(erros) {
+  var ul = document.querySelector('#mesagem-erro');
+
+  erros.forEach(function(erro) {
+    var li = document.createElement('li');
+    li.textContent = erro;
+    ul.appendChild(li);
+  });
 }
 
 function pagarForm(formulario) {
@@ -59,9 +66,15 @@ function montaTd(dado, classe) {
 }
 
 function validaPaciente(paciente) {
-  if (validaPeso(paciente.peso)) {
-    return '';
-  } else {
-    return 'Peso Inválido';
+  var erros = [];
+
+  if (!validaPeso(paciente.peso)) {
+    erros.push('Peso Inválido');
   }
+
+  if (!validaAltura(paciente.altura)) {
+    erros.push('Altura Inválida');
+  }
+
+  return erros;
 }
