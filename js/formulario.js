@@ -13,7 +13,7 @@ function criarPaciente(evento) {
   var erros = validaPaciente(paciente);
 
   if (erros.length) {
-    exibeMesagemErro(erros);
+    exibemensagemErro(erros);
     return;
   }
 
@@ -21,16 +21,23 @@ function criarPaciente(evento) {
   table.appendChild(pacienteTr);
 
   formulario.reset();
+  limpaLista();
 }
 
-function exibeMesagemErro(erros) {
-  var ul = document.querySelector('#mesagem-erro');
+function exibemensagemErro(erros) {
+  var ul = document.querySelector('#mensagem-erro');
+  limpaLista();
 
   erros.forEach(function(erro) {
     var li = document.createElement('li');
     li.textContent = erro;
     ul.appendChild(li);
   });
+}
+
+function limpaLista() {
+  var ul = document.querySelector('#mensagem-erro');
+  ul.innerHTML = '';
 }
 
 function pagarForm(formulario) {
@@ -74,6 +81,22 @@ function validaPaciente(paciente) {
 
   if (!validaAltura(paciente.altura)) {
     erros.push('Altura Inválida');
+  }
+
+  if (paciente.nome.length == 0) {
+    erros.push('Nome não pode ficar em branco!');
+  }
+
+  if (paciente.peso.length == 0) {
+    erros.push('Peso não pode ficar em branco!');
+  }
+
+  if (paciente.altura.length == 0) {
+    erros.push('Altura não pode ficar em branco!');
+  }
+
+  if (paciente.gordura.length == 0) {
+    erros.push('Gordura não pode ficar em branco!');
   }
 
   return erros;
