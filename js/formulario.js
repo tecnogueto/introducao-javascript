@@ -28,7 +28,6 @@ function exibeMesagemErro(erros) {
   var ul = document.querySelector('#mesagem-erro');
   limpaLista();
 
-
   erros.forEach(function(erro) {
     var li = document.createElement('li');
     li.textContent = erro;
@@ -97,11 +96,7 @@ function validaPaciente(paciente) {
   }
 
   if (paciente.gordura.length == 0) {
-<<<<<<< HEAD
-    erros.push('Gordura não pode ficar em branco!');
-=======
     erros.push('gordura não pode ficar em branco!');
->>>>>>> 3b38e4381170f574ebb937c3bddc060e3ca278bb
   }
 
   return erros;
