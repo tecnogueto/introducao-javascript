@@ -13,7 +13,7 @@ function criarPaciente(evento) {
   var erros = validaPaciente(paciente);
 
   if (erros.length) {
-    exibemensagemErro(erros);
+    exibeMesagemErro(erros);
     return;
   }
 
