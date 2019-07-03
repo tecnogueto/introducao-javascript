@@ -24,16 +24,10 @@ function criarPaciente(evento) {
   limpaLista();
 }
 
-<<<<<<< HEAD
-function exibemensagemErro(erros) {
-  var ul = document.querySelector('#mensagem-erro');
-  limpaLista();
-=======
 function exibeMesagemErro(erros) {
   var ul = document.querySelector('#mesagem-erro');
   limpaLista();
 
->>>>>>> 3b38e4381170f574ebb937c3bddc060e3ca278bb
 
   erros.forEach(function(erro) {
     var li = document.createElement('li');
