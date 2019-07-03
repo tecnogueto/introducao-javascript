@@ -24,9 +24,16 @@ function criarPaciente(evento) {
   limpaLista();
 }
 
+<<<<<<< HEAD
 function exibemensagemErro(erros) {
   var ul = document.querySelector('#mensagem-erro');
   limpaLista();
+=======
+function exibeMesagemErro(erros) {
+  var ul = document.querySelector('#mesagem-erro');
+  limpaLista();
+
+>>>>>>> 3b38e4381170f574ebb937c3bddc060e3ca278bb
 
   erros.forEach(function(erro) {
     var li = document.createElement('li');
@@ -36,7 +43,7 @@ function exibemensagemErro(erros) {
 }
 
 function limpaLista() {
-  var ul = document.querySelector('#mensagem-erro');
+  var ul = document.querySelector('#mesagem-erro');
   ul.innerHTML = '';
 }
 
@@ -96,7 +103,11 @@ function validaPaciente(paciente) {
   }
 
   if (paciente.gordura.length == 0) {
+<<<<<<< HEAD
     erros.push('Gordura não pode ficar em branco!');
+=======
+    erros.push('gordura não pode ficar em branco!');
+>>>>>>> 3b38e4381170f574ebb937c3bddc060e3ca278bb
   }
 
   return erros;
