@@ -1,15 +1,23 @@
-var tabela = document.querySelector("#tabela-paciente");
 
-tabela.addEventListener("dblclick", function (event) {
-  var alvoEvento = event.target;
-  var paiDoAlvo = alvoEvento.parentNode;
-  var nomeCliente = alvoEvento.textContent;
+/*var pacientes = document.querySelectorAll(".paciente");
+pacientes.forEach(function (paciente){
+    paciente.addEventListener("dblclick", function(){
+        paciente.remove();
+    });
+});
+*/
 
-  paiDoAlvo.classList.add("animacao");
+var tabela = document.querySelector('#tabela-paciente')
 
-  setTimeout(function () {
+tabela.addEventListener('dblclick' , function(event) {
+var alvoEvento = event.target;
+var paiDoAlvo = alvoEvento.parentNode;
+var nomeCliente = alvoEvento.textContent;
+
+paiDoAlvo.classList.add('animacao');
+
+setTimeout(function() {
     paiDoAlvo.remove();
-    alert("Você removeu o " +nomeCliente);
-  }, 500);
-
+    alert('Você removeu ' + nomeCliente);
+} , 500);
 });

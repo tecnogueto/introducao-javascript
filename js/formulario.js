@@ -1,3 +1,4 @@
+
 var botaoAdicionar = document.querySelector('#adicionar-paciente');
 
 botaoAdicionar.addEventListener('click', criarPaciente);
@@ -28,7 +29,8 @@ function exibeMesagemErro(erros) {
   var ul = document.querySelector('#mesagem-erro');
   limpaLista();
 
-  erros.forEach(function (erro) {
+
+  erros.forEach(function(erro) {
     var li = document.createElement('li');
     li.textContent = erro;
     ul.appendChild(li);
@@ -101,4 +103,3 @@ function validaPaciente(paciente) {
 
   return erros;
 }
-
