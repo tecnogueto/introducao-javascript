@@ -6,13 +6,13 @@ function adicionarPaciente(evento) {
   evento.preventDefault();
 
   var form = document.querySelector('#form-paciente');
-
   var nome = form.nome.value;
   var altura = form.altura.value;
   var gordura = form.gordura.value;
   var peso = form.peso.value;
 
-  var pacienteTr = document.createElement('tr');
+  if (validarNome(nome) ) {
+    var pacienteTr = document.createElement('tr');
 
   var nomeTd = document.createElement('td');
   var pesoTd = document.createElement('td');
@@ -35,4 +35,20 @@ function adicionarPaciente(evento) {
   pacienteTr.appendChild(alturaTd);
   pacienteTr.appendChild(gorduraTd);
   pacienteTr.appendChild(imcTd);
+
+  } else {
+    alert("Campo nome inválido. Inserir apenas letras :)");
+  }
 }
+
+function validarNome(texto) {
+  var letters = /^[A-Za-z]+$/;
+  if (texto.match(letters)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
